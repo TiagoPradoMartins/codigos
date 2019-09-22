@@ -1,0 +1,5 @@
+git clone - para baixar o projeto a primeira vez na maquina.
+git add . - para adicionar os arquivos nos commits.
+git commit -m "Mensagem" - para formalziar as mudanças.
+git push - para subir as alteraçoes no GitHub.
+git pull - para receber o código atualizado.
