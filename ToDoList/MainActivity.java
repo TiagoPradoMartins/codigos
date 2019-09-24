@@ -8,15 +8,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class MainActivity extends Activity {
     private EditText textoTarefa;
     private Button botaoAdicionar;
     private ListView listaTarefas;
     private SQLiteDatabase bancoDeDados;
+
+    private ArrayAdapter <String> itensAdaptador;
+    private ArrayList    <String> itens;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,20 +50,65 @@ public class MainActivity extends Activity {
 
                     //Resgata o que foi digitado
                     String textoDigitado = textoTarefa.getText().toString();
+                    salvarTafera(textoDigitado);
+                    textoTarefa.setText("");
 
-                    //Insere o que foi digitado no campo tarefa
-                    bancoDeDados.execSQL("INSERT INTO tarefas(tarefa) VALUES('" + textoDigitado + "')");
 
                 }
 
             });
 
+
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        //chama o Metodo recuperarTarefas
+        recuperarTarefas();
+
+
+
+    }
+    //Metodo para salvar tarefa
+    private void salvarTafera(String texto){
+
+        try {
+
+            if(texto.equals("")){
+                alert("Digitar tarefa ");
+            }else {
+                //Insere o que foi digitado no campo tarefa
+                bancoDeDados.execSQL("INSERT INTO tarefas(tarefa) VALUES('" + texto + "')");
+                alert("Tarefa adicionada com sucesso!");
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    //Metodo para enviar mensagem Toast
+    private void alert(String msn){
+        Toast.makeText(MainActivity.this , msn , Toast.LENGTH_SHORT ).show();
+    }
+
+    //Metodo para Recuperar as tarefas e apresentar no ListView
+    private void recuperarTarefas(){
+        try {
             //Recuperar as tarefas
-            Cursor cursor = bancoDeDados.rawQuery("SELECT * FROM tarefas" , null);
+            Cursor cursor = bancoDeDados.rawQuery("SELECT * FROM tarefas ORDER BY id DESC" , null);
 
             //Recuperar ids das colunas , Index das colunas
             int indiceCulunaId = cursor.getColumnIndex("id");
             int indiceCulunaTarefa = cursor.getColumnIndex("tarefa");
+
+            //Criar o Adaptador ArrayAdapter
+            itensAdaptador = new ArrayAdapter<String>(getApplicationContext(),
+                                                    android.R.layout.simple_list_item_2,
+                                                    android.R.id.text2,
+                                                    itens);
+
 
             //Listar as tarefas
             cursor.moveToFirst(); //move o cursor para a primeira posiçao
@@ -66,14 +118,9 @@ public class MainActivity extends Activity {
                 Log.i("Resultado -","Id     : " + cursor.getString(indiceCulunaId));
                 cursor.moveToNext(); // move o cursor para a proxima posiçao
             }
-
-
         }catch (Exception e){
             e.printStackTrace();
         }
-
-
-
 
     }
 }
