@@ -8,12 +8,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MainActivity extends Activity {
@@ -24,6 +26,7 @@ public class MainActivity extends Activity {
 
     private ArrayAdapter <String> itensAdaptador;
     private ArrayList    <String> itens;
+    private ArrayList    <Integer> ids;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,22 +54,25 @@ public class MainActivity extends Activity {
                     //Resgata o que foi digitado
                     String textoDigitado = textoTarefa.getText().toString();
                     salvarTafera(textoDigitado);
-                    textoTarefa.setText("");
-
-
                 }
 
             });
-
-
+            //Cria evento click da ListView
+            listaTarefas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    deletarTarefas(ids.get(position));
+                    alert("Tarefa removida com sucesso");
+                    recuperarTarefas();
+                }
+            });
+            //chama o Metodo recuperarTarefas
+            recuperarTarefas();
 
 
         }catch (Exception e){
             e.printStackTrace();
         }
-        //chama o Metodo recuperarTarefas
-        recuperarTarefas();
-
 
 
     }
@@ -75,17 +81,29 @@ public class MainActivity extends Activity {
 
         try {
 
-            if(texto.equals("")){
+            if(texto.equals("")){                       //Verifica se o campo digitado está vazio
                 alert("Digitar tarefa ");
             }else {
                 //Insere o que foi digitado no campo tarefa
                 bancoDeDados.execSQL("INSERT INTO tarefas(tarefa) VALUES('" + texto + "')");
+
                 alert("Tarefa adicionada com sucesso!");
+
+                recuperarTarefas();                     //chama o Metodo recuperarTarefas
+
+                //limpa o campo digitado
+                textoTarefa.setText("");
             }
 
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    //Metodo para Deletar tarefas e atualizar a lista na tela
+    private void deletarTarefas(Integer id){
+        bancoDeDados.execSQL("DELETE FROM tarefas WHERE id=" + id);
+        recuperarTarefas();
     }
 
     //Metodo para enviar mensagem Toast
@@ -102,24 +120,31 @@ public class MainActivity extends Activity {
             //Recuperar ids das colunas , Index das colunas
             int indiceCulunaId = cursor.getColumnIndex("id");
             int indiceCulunaTarefa = cursor.getColumnIndex("tarefa");
+            //Cria a arraylist ids
+            ids   = new ArrayList<Integer>();
 
             //Criar o Adaptador ArrayAdapter
+            itens = new ArrayList<String>();
             itensAdaptador = new ArrayAdapter<String>(getApplicationContext(),
-                                                    android.R.layout.simple_list_item_2,
-                                                    android.R.id.text2,
-                                                    itens);
-
+                    android.R.layout.simple_list_item_2,
+                    android.R.id.text2,
+                    itens);
+            listaTarefas.setAdapter(itensAdaptador);
 
             //Listar as tarefas
             cursor.moveToFirst(); //move o cursor para a primeira posiçao
             while (cursor != null){
 
-                Log.i("Resultado -","Tarefa : " + cursor.getString(indiceCulunaTarefa));
-                Log.i("Resultado -","Id     : " + cursor.getString(indiceCulunaId));
+                Log.i("Resultado - ","Tarefa :" +  cursor.getString(indiceCulunaTarefa));
+                //Adiciona indice da coluna tarefa na arraylist itens
+                itens.add(cursor.getString(indiceCulunaTarefa));
+                //Adiciona indice da coluna id na arraylist ids e converte para Integer
+                ids.add(Integer.parseInt(cursor.getString(indiceCulunaId)));
+
                 cursor.moveToNext(); // move o cursor para a proxima posiçao
             }
         }catch (Exception e){
-            e.printStackTrace();
+            e.printStackTrace(); // printa o erro caso ocorra
         }
 
     }
