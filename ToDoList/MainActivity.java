@@ -57,15 +57,31 @@ public class MainActivity extends Activity {
                 }
 
             });
+
+            //Cria evento click longo na ListView
+            listaTarefas.setLongClickable(true);
+            listaTarefas.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                @Override
+                public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                    deletarTarefas(ids.get(position));      //chama o Metodo deletarTarefas
+                    alert("Tarefa removida com sucesso");
+                    recuperarTarefas();                     //chama o Metodo recuperaTarefas para atualizar a ListView
+                    return true;
+                }
+            });
+
             //Cria evento click da ListView
-            listaTarefas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            /*listaTarefas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    deletarTarefas(ids.get(position));
+                    deletarTarefas(ids.get(position));      //chama o Metodo
                     alert("Tarefa removida com sucesso");
                     recuperarTarefas();
                 }
-            });
+            });*/
+
+
+
             //chama o Metodo recuperarTarefas
             recuperarTarefas();
 
