@@ -88,15 +88,15 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView textoResultado;
     private ImageView iconeVerde;
-    //private EditText textoCodigoDigitado;
-    //private Button botaoVerificar;
+    private EditText campoScaner;
+    private Button botaoVerificar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-            //botaoVerificar      = (Button) findViewById(R.id.botaoVerificarId);
-            //textoCodigoDigitado = (EditText) findViewById(R.id.textoCodigoDigitadoId);
+            botaoVerificar      = (Button) findViewById(R.id.botaoVerificarId);
+            campoScaner         = (EditText) findViewById(R.id.campoScanerId);
             iconeVerde          = (ImageView) findViewById(R.id.iconeVerdeId);
             textoResultado      = (TextView) findViewById(R.id.textoResultadoId);
             Button botaoScan    = (Button) findViewById(R.id.botaoId);
@@ -117,7 +117,67 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-            
+
+
+        //Botao Verificar
+        botaoVerificar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(campoScaner != null){
+                    if (campoScaner.getContext() != null || campoScaner.getText().toString() != "" ){
+                        String textoQrValidar = campoScaner.getText().toString().substring(
+                                campoScaner.getText().toString().indexOf("=") + 1);
+                        final String textoQrValidarFinal = textoQrValidar.substring(0, 44);
+
+                        Boolean desligaFor = false;
+                        for (int aCondigo = 0; aCondigo < codigosQR.length && desligaFor == false; aCondigo++) {
+                            if (textoQrValidarFinal != codigosQR[aCondigo]) {
+                                textoResultado.setText("CODIGO INCORRETO " + textoQrValidarFinal);
+
+
+                            } else if (textoQrValidarFinal.equals(codigosQR[aCondigo])){
+
+                                alert("CODIGO CORRETO: " + textoQrValidarFinal);
+                                iconeVerde.setImageResource(R.drawable.iconeverde);
+                                textoResultado.setText("CODIGO CORRETO " + textoQrValidarFinal);
+                                alert("TESTE DE LOOP");
+                                desligaFor = true;
+                            }
+
+
+                        }
+                    }
+
+
+                }
+                campoScaner.setText("");
+            }
+        });
+
+
+
+
+        /*String textoQrValidar = textoCodigoDigitado.getText().toString().substring(
+                                        textoCodigoDigitado.getText().toString().indexOf("=")+1);
+            final String textoQrValidarFinal = textoQrValidar.substring(0,44);
+
+            //Botao Verificar
+            botaoVerificar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (textoCodigoDigitado.getText() != null){
+                        for (int aCondigo = 0 ; aCondigo < codigosQR.length ;aCondigo++){
+                            if(textoQrValidarFinal.equals(codigosQR[aCondigo])){
+                                alert("CODIGO CORRETO: " + textoQrValidarFinal);
+                                iconeVerde.setImageResource(R.drawable.iconeverde);
+                                textoResultado.setText("CODIGO CORRETO " + textoQrValidarFinal);
+                            }
+
+                        }
+                    }
+
+                }
+            });*/
 
 
     }
@@ -129,7 +189,8 @@ public class MainActivity extends AppCompatActivity {
 
             if (result.getContents() != null){
 
-                
+                //String testeResultado;
+                //String testeResultado2;
                 String testeResultado = result.getContents().substring(result.getContents().indexOf("=")+1);
                 String testeResultado2 = testeResultado.substring(0,44);
 
