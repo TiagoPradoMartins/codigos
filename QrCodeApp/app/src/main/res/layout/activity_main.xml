@@ -24,6 +24,7 @@
         android:layout_marginEnd="3dp"
         android:layout_marginRight="3dp"
         android:layout_marginBottom="-109dp"
+        android:focusable="false"
         android:text="@string/botao_scan" />
 
     <TextView
@@ -85,7 +86,8 @@
         android:padding="5dp"
         android:paddingLeft="5dp"
         android:paddingTop="5dp"
-        android:paddingRight="5dp"/>
+        android:paddingRight="5dp"
+        android:imeOptions="actionNext"/>
         //android:maxLines="1"
         //android:imeOptions="actionNext"
 

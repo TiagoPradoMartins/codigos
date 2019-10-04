@@ -95,19 +95,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     try {
+
         botaoVerificar = (Button) findViewById(R.id.botaoVerificarId);
         campoScaner = (EditText) findViewById(R.id.campoScanerId);
         iconeVerde = (ImageView) findViewById(R.id.iconeVerdeId);
         textoResultado = (TextView) findViewById(R.id.textoResultadoId);
-        Button botaoScan = (Button) findViewById(R.id.botaoId);
+        final Button botaoScan = (Button) findViewById(R.id.botaoId);
         final Activity activity = this;
-        /*
-        if(campoScaner.getText().toString().equals("")){
-            botaoScan.setEnabled(true);
-        }else{
-            botaoScan.setEnabled(false);
-        }
-        */
+        campoScaner.requestFocus();
+
         //Botao Verificar
         botaoVerificar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 campoScaner.setText("");
+                campoScaner.requestFocus();
             }
         });
 
@@ -163,6 +160,16 @@ public class MainActivity extends AppCompatActivity {
                 textoResultado.setText("");
                 iconeVerde.setImageDrawable(null);
 
+            }
+        });
+        campoScaner.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus && campoScaner.getText().toString().equals("")){
+                    botaoScan.setEnabled(true);
+                }else{
+                    botaoScan.setEnabled(false);
+                }
             }
         });
 
