@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "967594225625",
+    "firebase_url": "https://autenticacaofirebase-8a2ef.firebaseio.com",
+    "project_id": "autenticacaofirebase-8a2ef",
+    "storage_bucket": "autenticacaofirebase-8a2ef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:967594225625:android:3de73977115c1bf3cef3c8",
+        "android_client_info": {
+          "package_name": "com.pharahonics.autenticacaousuario"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "967594225625-c0ln2rv5p63gojs74rg72uvtmduo3rtl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pharahonics.autenticacaousuario",
+            "certificate_hash": "acc4991dcd8d6c0cddbff7449035ae0db98c0b4a"
+          }
+        },
+        {
+          "client_id": "967594225625-sgr924tnmrpouil73gk2i198nsg2ien8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAA1yQPl_POBbHAHI2s6kplhYRSRlldyi0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "967594225625-sgr924tnmrpouil73gk2i198nsg2ien8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
