@@ -104,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
         final Activity activity = this;
         campoScaner.requestFocus();
 
+
         //Botao Verificar
         botaoVerificar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,9 +144,12 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 campoScaner.setText("");
+                campoScaner.setFocusable(true);
                 campoScaner.requestFocus();
             }
         });
+
+
 
         // Botao Scan
         botaoScan.setOnClickListener(new View.OnClickListener() {
@@ -165,11 +169,10 @@ public class MainActivity extends AppCompatActivity {
         campoScaner.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if(!hasFocus && campoScaner.getText().toString().equals("")){
-                    botaoScan.setEnabled(true);
-                }else{
-                    botaoScan.setEnabled(false);
+                if(!hasFocus){
+                    campoScaner.setFocusable(false);
                 }
+
             }
         });
 
