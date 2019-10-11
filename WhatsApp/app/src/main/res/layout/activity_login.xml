@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    tools:context=".activity.MainActivity">
+    android:background="@color/colorPrimaryDark"
+    tools:context=".activity.LoginActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -17,25 +17,28 @@
         android:layout_marginEnd="105dp"
         android:layout_marginRight="105dp"
         android:layout_marginBottom="24dp"
+        android:contentDescription="TODO"
         app:layout_constraintBottom_toTopOf="@+id/editText4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo"
-        android:contentDescription="TODO" />
+        app:srcCompat="@drawable/logo" />
 
     <EditText
         android:id="@+id/editText2"
         android:layout_width="50dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
+        android:background="@color/colorPrimaryDark"
         android:ems="10"
         android:hint="@string/texto_mais_55"
         android:inputType="number"
+        android:textColor="@color/textColorPrimary"
+        app:layout_constraintBottom_toBottomOf="@+id/editText3"
         app:layout_constraintEnd_toStartOf="@+id/editText3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText4" />
@@ -50,6 +53,7 @@
         android:ems="10"
         android:hint="@string/texto_11"
         android:inputType="number"
+        android:textColor="@color/textColorPrimary"
         app:layout_constraintStart_toEndOf="@+id/editText2"
         app:layout_constraintTop_toBottomOf="@+id/editText4" />
 
@@ -66,6 +70,7 @@
         android:ems="10"
         android:hint="@string/texto_digite_seu_nome"
         android:inputType="textPersonName"
+        android:textColor="@color/textColorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,10 +86,26 @@
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
         android:ems="10"
-        android:hint="998765432"
+        android:hint="@string/texto_telefone_exemplo"
         android:inputType="number"
+        android:textColor="@color/textColorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/editText3"
         app:layout_constraintTop_toBottomOf="@+id/editText4" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/texto_botao_cadastrar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
