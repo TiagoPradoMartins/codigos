@@ -8,4 +8,5 @@
     <string name="texto_validacao">Validação</string>
     <string name="texto_sms_validacao">Você recebeu um SMG para validação do seu número,digite o código de validação abaixo:</string>
     <string name="texto_codigo_validacao">Digite o código!</string>
+    <string name="texto_botao_validar">Validar</string>
 </resources>
