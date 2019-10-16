@@ -17,7 +17,7 @@
         android:layout_marginEnd="105dp"
         android:layout_marginRight="105dp"
         android:layout_marginBottom="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/editText4"
+        app:layout_constraintBottom_toTopOf="@+id/edit_nome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -25,7 +25,7 @@
         android:contentDescription="TODO" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/edit_cod_pais"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -36,12 +36,12 @@
         android:ems="10"
         android:hint="@string/texto_mais_55"
         android:inputType="number"
-        app:layout_constraintEnd_toStartOf="@+id/editText3"
+        app:layout_constraintEnd_toStartOf="@+id/edit_cod_area"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_nome" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/edit_cod_area"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -50,11 +50,11 @@
         android:ems="10"
         android:hint="@string/texto_11"
         android:inputType="number"
-        app:layout_constraintStart_toEndOf="@+id/editText2"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
+        app:layout_constraintStart_toEndOf="@+id/edit_cod_pais"
+        app:layout_constraintTop_toBottomOf="@+id/edit_nome" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/edit_nome"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="10dp"
@@ -72,7 +72,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/edit_telefone"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -84,7 +84,7 @@
         android:hint="998765432"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editText3"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
+        app:layout_constraintStart_toEndOf="@+id/edit_cod_area"
+        app:layout_constraintTop_toBottomOf="@+id/edit_nome" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

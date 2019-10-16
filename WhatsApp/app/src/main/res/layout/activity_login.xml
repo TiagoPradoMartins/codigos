@@ -18,14 +18,14 @@
         android:layout_marginRight="105dp"
         android:layout_marginBottom="24dp"
         android:contentDescription="TODO"
-        app:layout_constraintBottom_toTopOf="@+id/editText4"
+        app:layout_constraintBottom_toTopOf="@+id/edit_nome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/edit_cod_pais"
         android:layout_width="50dp"
         android:layout_height="0dp"
         android:layout_marginStart="10dp"
@@ -38,27 +38,30 @@
         android:hint="@string/texto_mais_55"
         android:inputType="number"
         android:textColor="@color/textColorPrimary"
-        app:layout_constraintBottom_toBottomOf="@+id/editText3"
-        app:layout_constraintEnd_toStartOf="@+id/editText3"
+        app:layout_constraintBottom_toBottomOf="@+id/edit_cod_area"
+        app:layout_constraintEnd_toStartOf="@+id/edit_cod_area"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_nome" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/edit_cod_area"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
         android:ems="10"
         android:hint="@string/texto_11"
         android:inputType="number"
         android:textColor="@color/textColorPrimary"
-        app:layout_constraintStart_toEndOf="@+id/editText2"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
+        app:layout_constraintEnd_toStartOf="@+id/edit_telefone"
+        app:layout_constraintStart_toEndOf="@+id/edit_cod_pais"
+        app:layout_constraintTop_toBottomOf="@+id/edit_nome" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/edit_nome"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="10dp"
@@ -77,7 +80,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/edit_telefone"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -90,11 +93,11 @@
         android:inputType="number"
         android:textColor="@color/textColorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editText3"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
+        app:layout_constraintStart_toEndOf="@+id/edit_cod_area"
+        app:layout_constraintTop_toBottomOf="@+id/edit_nome" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/bt_cadastrar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -106,6 +109,6 @@
         android:text="@string/texto_botao_cadastrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_cod_pais" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
